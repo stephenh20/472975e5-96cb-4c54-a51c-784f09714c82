@@ -62,10 +62,53 @@ Your task involves creating a local development environment using Docker. This d
 Please also provide your answers to the following open questions. You may organise the answers in the **readme.md** or a separate file in the same repository.
 ### Question 1
 Describe how you would approach designing a resilient and fault-tolerant hosting infrastructure with AWS for an application currently running on an on-premises load-balanced cluster of application servers and a single MySQL database server. How would you configure networking within that infrastructure? What AWS services would you use and why?
+
+MySQL db using RDS
+ - 2 nodes (minimum) in different AZs
+ - depending on required performance may add read replica for reporting
+
+
+
+
+
+
 ### Question 2
 If you are given Windows 10 as your work machine (with 8-core CPUs and 16GB RAM), but you need to work with many Pythons and Linux Bash scripting along with many different Linux based docker containers.
 
 Assuming you cannot change the machine’s operating system and cannot re-partition any of the local HDDs; However, you have admin access to install software and enabling some Windows features.
 
-How would you setup your work environment on the machine? 
+How would you setup your work environment on the machine?
+
+The specifications of the supplied machine are quite high which means that any of the alternatives below could be used. 
+
+1. Use a development environment machine 
+
+Some workplaces keep a development environment within aws as such all that
+would be needed is access to this environment via vpn and ssh to access the 
+individual machines. 
+On windows this could be done with the openVPN windows client and putty.
+An advantage to this approach is that code does not leave the development
+environment.
+
+2. Windows Subsystem for Linux 
+
+This installs a Linux kernel within Windows.
+This supports Docker and shell.
+
+3. Windows Docker
+
+Docker is supported on Windows.
+Once Docker is running on windows you can have access to multiple linux 
+containers.
+
+4. Virtual Machines
+
+Create a Linux virtual machine and do most of your work within the virtual
+machine.
+VirtualBox can be used to do this.
+
+If access to Windows pre-installed applications is required I would probably 
+start out using WSL and if that is proving to be a problem install a linux
+virtual machine.
+
 

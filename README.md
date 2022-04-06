@@ -18,6 +18,7 @@ Your app will go in the directory src
 * the web port on your host = 8080 (access at http://localhost:8080)
 * PHP pdo mysql and mysqli are enabled
 * PHP redis is enabled
+* example php db connect: mysqli_connect("db", "test", "p1ssw0rd");
 * To access this container from one of the other containers use "app" as the ip address
 
 ### Redis in cache container

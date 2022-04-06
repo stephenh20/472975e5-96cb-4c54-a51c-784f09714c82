@@ -55,4 +55,9 @@ it is recommended if you change config files to down then up the containers.
 * list running docker containers: docker ps
 * enter running container with shell: docker exec -it <container name> bash
 * if you need to follow a containers logs: docker logs -f <container name>
+---
+# Question1 and Question2
+Open the index.html file with a browser from the directory Question1 / Question2
 
+* [Question 1](Question1/index.html)
+* [Question 2](Question2/index.html)

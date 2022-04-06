@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+                    <h2>Question2</h2>
+                    <p>If you are given Windows 10 as your work machine (with 8-core CPUs and 16GB RAM), 
+                       but you need to work with many Pythons and Linux Bash scripting along with many 
+                       different Linux based docker containers.</p>
+                    <p>Assuming you cannot change the machine’s operating system and cannot re-partition any of the local HDDs; 
+                       However, you have admin access to install software and enabling some Windows features.</p>
+                    <p>How would you setup your work environment on the machine?</p>
+                </section>
+				<section data-markdown>
+                    <textarea data-template>
+                    ## Preample
+                    The specifications of the given machine are quite high which means that any of the alternatives described could be used.
+                    </textarea>
+                </section>
+				<section data-markdown>
+                    <textarea data-template>
+                    ## Option 1: Dev machine within AWS
+                    * Use a dev linux machine within AWS
+                    * All that is requiured is puTTY and Winscp
+                    * Docker is supported on Windows
+                    </textarea>
+                </section>
+				<section data-markdown>
+                    <textarea data-template>
+                    ## Option 2: Windows Subsystem for Linux (WSL)
+                    * This installs a Linux kernel within Windows.
+                    * This supports Docker and linux shell.
+                    * This supports Python
+                    </textarea>
+                </section>
+				<section data-markdown>
+                    <textarea data-template>
+                    ## Option 3: Virtual Machines 
+                    * Complete linux setup in VM
+                    </textarea>
+                </section>
+				<section data-markdown>
+                    <textarea data-template>
+                    ## Conclusion 
+                    A combination of all options could be used.
+                    SOEs exist for a reason, whether it be security or maintainability,
+                    learning to co-exist with the soe is not that onerous (usually) and
+                    there are ways around most issues as outlined.
+                    </textarea>
+                </section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>

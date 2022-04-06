@@ -1,0 +1,136 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+                    <h2>Question1</h2>
+                    <p>Describe how you would approach designing a resilient and fault-tolerant hosting 
+                    infrastructure with AWS for an application currently running on an on-premises 
+                    load-balanced cluster of application servers and a single MySQL database server.</p>
+                    <p>How would you configure networking within that infrastructure?</p>
+                    <p>What AWS services would you use and why?</p>
+                </section>
+				<section data-markdown>
+                    <textarea data-template>
+                    ## Database: RDS MariaDB
+                    * 2 machines for multi AZ HA.
+                    * Add read replicas if read only tasks like reporting slowing down production.
+                    * MariaDB can be faster than MySQL and is compatible with it.
+                    * reserve these instances to save costs
+                    * db type dependant on load and size large data sets may want postgres
+                    * backup easily achieved with rds
+                    </textarea>
+                </section>
+				<section data-markdown>
+                    <textarea data-template>
+                    ## Load Balancers: ALBs
+                    * multi AZ
+                    * points to target groups (ec2 instances)
+                    * spin up new machines based on load
+                    * machines based on AMI (stored image)
+                    * multiple weighted target groups for blue/green deploys
+                    </textarea>
+                </section>
+                <section data-markdown>
+                    <textarea data-template>
+                    ## Application Servers: EC2 instances
+                    * build from AMI
+                    * minimise number when not in use
+                    * reserve instances for base line numbers to save costs 
+                    * could have docker containers or be installed into base os
+                    * ci pipeline builds AMI
+                    </textarea>
+                </section>
+                <section data-markdown>
+                    <textarea data-template>
+                    ## Secure Store: KMS
+                    * use KMS to securely serve up passwords required by app servers
+                    </textarea>
+                </section>
+                <section data-markdown>
+                    <textarea data-template>
+                    ## Define: Cloud Formation
+                    * use Cloud Formation to define infrastructure
+                    * this makes the system repeatable for test / qa /staging / dev
+                    * Terraform could be used instead for platform agnostic definitions
+                    </textarea>
+                </section>
+                <section data-markdown>
+                    <textarea data-template>
+                    ## Monitor: Cloud Watch and Datadog
+                    * Monitor for performance and service level
+                    </textarea>
+                </section>
+                <section data-markdown>
+                    <textarea data-template>
+                    ## Logging: Opensearch
+                    * central log collection
+                    * logstash baked into AMIs
+                    * as machines are created / destroyed based on demand need a way to keep logs
+                    * used to be ELK stack
+                    </textarea>
+                </section>
+                <section data-markdown>
+                    <textarea data-template>
+                    ## DNS: Route53
+                    * fast changes when modifying AWS records
+                    </textarea>
+                </section>
+                <section data-markdown>
+                    <textarea data-template>
+                    ## User Management: IAM
+                    * enable 2 factor
+                    * separate dev / test / prod accounts
+                    </textarea>
+                </section>
+                <section data-markdown>
+                    <textarea data-template>
+                    ## Optional: depending on need 
+                    * Email - SES this is now available in Australia
+                    * Message Queues - SQS
+                    * Cache - Redis
+                    * Data Store - S3
+                    </textarea>
+                </section>
+                <section data-markdown>
+                    <textarea data-template>
+                    ## Network 
+                    * Each environment prod / dev / test to have its own subnet
+                    - no routing between environments
+                    * Each environment to have a 'bounce' host for access to machines in environment
+                    - bounce host can be done with openvpn or ssh
+                    </textarea>
+                </section>
+			</div>
+		</div>
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>

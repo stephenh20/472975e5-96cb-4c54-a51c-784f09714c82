@@ -21,3 +21,11 @@ services:
             - MYSQL_DATABASE=test
             - MYSQL_USER=test
             - MYSQL_PASSWORD=p1ssw0rd
+    cache:
+        image: redis:6.2
+        ports:
+            - "6379:6379"
+        volumes:
+            - ./docker/cache/conf:/usr/local/etc/redis
+            - ./docker/cache/data:/data
+        command: redis-server /usr/local/etc/redis/redis.conf --save 60 1            

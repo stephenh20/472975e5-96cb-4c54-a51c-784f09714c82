@@ -1,2 +1,2 @@
-docker/db/data
-docker/cache/data
+docker/db/data/
+docker/cache/data/

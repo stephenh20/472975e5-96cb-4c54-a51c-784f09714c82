@@ -60,4 +60,4 @@ it is recommended if you change config files to down then up the containers.
 Open the index.html file with a browser from the directory Question1 / Question2
 
 * [Question 1](https://htmlpreview.github.io/?https://github.com/stephenh20/472975e5-96cb-4c54-a51c-784f09714c82/blob/main/Question1/index.html)
-* [Question 2](Question2/index.html)
+* [Question 2](https://htmlpreview.github.io/?https://github.com/stephenh20/472975e5-96cb-4c54-a51c-784f09714c82/blob/main/Question2/index.html)

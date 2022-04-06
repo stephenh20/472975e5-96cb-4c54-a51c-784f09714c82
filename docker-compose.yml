@@ -21,6 +21,7 @@ services:
             - MYSQL_DATABASE=test
             - MYSQL_USER=test
             - MYSQL_PASSWORD=p1ssw0rd
+        user: "${UID_GID}"
     cache:
         image: redis:6.2
         ports:
